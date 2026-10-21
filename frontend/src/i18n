@@ -1,0 +1,322 @@
+javascript;
+import { useState } from "react";
+
+export const translations = {
+  en: {
+    language: "Language",
+    english: "English",
+    hindi: "हिंदी",
+    kannada: "ಕನ್ನಡ",
+
+    appName: "ProofBeforePay",
+    tagline: "Your payment workspace",
+
+    login: "Login",
+    logout: "Logout",
+    register: "Register",
+    email: "Email address",
+    password: "Password",
+    confirmPassword: "Confirm password",
+    fullName: "Full name",
+    showPassword: "Show",
+    hidePassword: "Hide",
+    createAccount: "Create account",
+    noAccount: "Don't have an account?",
+    haveAccount: "Already have an account?",
+
+    dashboard: "Dashboard",
+    profile: "My Profile",
+    settings: "Settings",
+    newRequest: "New Request",
+    allRequests: "All Requests",
+
+    paymentDashboard: "Payment Dashboard",
+    managePayments: "Manage payments with confidence.",
+    dashboardDescription:
+      "Create a request, submit payment proof, and review its status.",
+
+    totalRequests: "Total Requests",
+    awaitingProof: "Awaiting Proof",
+    underReview: "Under Review",
+    approved: "Approved",
+    rejected: "Rejected",
+    pendingProof: "Pending Proof",
+    proofSubmitted: "Proof Submitted",
+
+    createPaymentRequest: "Create Payment Request",
+    paymentTitle: "Payment title",
+    enterPaymentTitle: "Enter payment title",
+    amount: "Amount",
+    description: "Description",
+    enterDescription: "Enter payment description",
+    requester: "Requester",
+    requesterName: "Requester name",
+    receiver: "Receiver",
+    receiverName: "Receiver name",
+    createRequest: "Create Request",
+    creatingRequest: "Creating request...",
+    requestCreated: "Payment request created successfully!",
+
+    refresh: "Refresh",
+    refreshing: "Refreshing...",
+    submitProof: "Submit Proof",
+    enterUpiReference: "Enter UPI transaction reference",
+    proofSubmittedSuccessfully: "Payment proof submitted successfully!",
+    enterProofError: "Please enter the UPI transaction reference.",
+
+    request: "Request",
+    status: "Status",
+    paymentProof: "Payment Proof",
+    noRequests: "No payment requests yet.",
+    loading: "Loading...",
+    save: "Save",
+    cancel: "Cancel",
+    edit: "Edit",
+    delete: "Delete",
+    search: "Search",
+    back: "Back",
+
+    profileDetails: "Profile Details",
+    phone: "Phone number",
+    city: "City",
+    introduction: "Introduction",
+    uploadPhoto: "Upload photo",
+    removePhoto: "Remove photo",
+    saveProfile: "Save Profile",
+
+    requiredField: "This field is required.",
+    somethingWentWrong: "Something went wrong.",
+    backendError:
+      "Could not connect to the backend. Check whether Spring Boot is running.",
+
+    howItWorks: "How it works",
+    stepOne: "Create a request",
+    stepTwo: "Submit payment proof",
+    stepThree: "Review the request",
+    footer: "Payment transparency starts with clear proof.",
+  },
+
+  hi: {
+    language: "भाषा",
+    english: "English",
+    hindi: "हिंदी",
+    kannada: "ಕನ್ನಡ",
+
+    appName: "प्रूफबिफोरपे",
+    tagline: "आपका भुगतान कार्यक्षेत्र",
+
+    login: "लॉगिन",
+    logout: "लॉगआउट",
+    register: "रजिस्टर करें",
+    email: "ईमेल पता",
+    password: "पासवर्ड",
+    confirmPassword: "पासवर्ड की पुष्टि करें",
+    fullName: "पूरा नाम",
+    showPassword: "दिखाएँ",
+    hidePassword: "छिपाएँ",
+    createAccount: "खाता बनाएँ",
+    noAccount: "खाता नहीं है?",
+    haveAccount: "पहले से खाता है?",
+
+    dashboard: "डैशबोर्ड",
+    profile: "मेरी प्रोफ़ाइल",
+    settings: "सेटिंग्स",
+    newRequest: "नया अनुरोध",
+    allRequests: "सभी अनुरोध",
+
+    paymentDashboard: "भुगतान डैशबोर्ड",
+    managePayments: "विश्वास के साथ भुगतान प्रबंधित करें।",
+    dashboardDescription:
+      "अनुरोध बनाएँ, भुगतान का प्रमाण जमा करें और उसकी स्थिति देखें।",
+
+    totalRequests: "कुल अनुरोध",
+    awaitingProof: "प्रमाण की प्रतीक्षा",
+    underReview: "समीक्षाधीन",
+    approved: "स्वीकृत",
+    rejected: "अस्वीकृत",
+    pendingProof: "प्रमाण बाकी है",
+    proofSubmitted: "प्रमाण जमा किया गया",
+
+    createPaymentRequest: "भुगतान अनुरोध बनाएँ",
+    paymentTitle: "भुगतान का शीर्षक",
+    enterPaymentTitle: "भुगतान का शीर्षक दर्ज करें",
+    amount: "राशि",
+    description: "विवरण",
+    enterDescription: "भुगतान का विवरण दर्ज करें",
+    requester: "अनुरोधकर्ता",
+    requesterName: "अनुरोधकर्ता का नाम",
+    receiver: "प्राप्तकर्ता",
+    receiverName: "प्राप्तकर्ता का नाम",
+    createRequest: "अनुरोध बनाएँ",
+    creatingRequest: "अनुरोध बनाया जा रहा है...",
+    requestCreated: "भुगतान अनुरोध सफलतापूर्वक बनाया गया!",
+
+    refresh: "रीफ़्रेश करें",
+    refreshing: "रीफ़्रेश हो रहा है...",
+    submitProof: "प्रमाण जमा करें",
+    enterUpiReference: "UPI लेन-देन संदर्भ दर्ज करें",
+    proofSubmittedSuccessfully: "भुगतान का प्रमाण सफलतापूर्वक जमा हुआ!",
+    enterProofError: "कृपया UPI लेन-देन संदर्भ दर्ज करें।",
+
+    request: "अनुरोध",
+    status: "स्थिति",
+    paymentProof: "भुगतान का प्रमाण",
+    noRequests: "अभी कोई भुगतान अनुरोध नहीं है।",
+    loading: "लोड हो रहा है...",
+    save: "सहेजें",
+    cancel: "रद्द करें",
+    edit: "बदलें",
+    delete: "हटाएँ",
+    search: "खोजें",
+    back: "वापस",
+
+    profileDetails: "प्रोफ़ाइल विवरण",
+    phone: "फ़ोन नंबर",
+    city: "शहर",
+    introduction: "परिचय",
+    uploadPhoto: "फ़ोटो अपलोड करें",
+    removePhoto: "फ़ोटो हटाएँ",
+    saveProfile: "प्रोफ़ाइल सहेजें",
+
+    requiredField: "यह फ़ील्ड भरना आवश्यक है।",
+    somethingWentWrong: "कुछ गलत हो गया।",
+    backendError:
+      "बैकएंड से कनेक्ट नहीं हो सका। जाँचें कि Spring Boot चल रहा है या नहीं।",
+
+    howItWorks: "यह कैसे काम करता है",
+    stepOne: "अनुरोध बनाएँ",
+    stepTwo: "भुगतान का प्रमाण जमा करें",
+    stepThree: "अनुरोध की समीक्षा करें",
+    footer: "सही प्रमाण से भुगतान में पारदर्शिता आती है।",
+  },
+
+  kn: {
+    language: "ಭಾಷೆ",
+    english: "English",
+    hindi: "हिंदी",
+    kannada: "ಕನ್ನಡ",
+
+    appName: "ಪ್ರೂಫ್‌ಬಿಫೋರ್‌ಪೇ",
+    tagline: "ನಿಮ್ಮ ಪಾವತಿ ಕಾರ್ಯಸ್ಥಳ",
+
+    login: "ಲಾಗಿನ್",
+    logout: "ಲಾಗ್‌ಔಟ್",
+    register: "ನೋಂದಣಿ",
+    email: "ಇಮೇಲ್ ವಿಳಾಸ",
+    password: "ಪಾಸ್‌ವರ್ಡ್",
+    confirmPassword: "ಪಾಸ್‌ವರ್ಡ್ ದೃಢೀಕರಿಸಿ",
+    fullName: "ಪೂರ್ಣ ಹೆಸರು",
+    showPassword: "ತೋರಿಸಿ",
+    hidePassword: "ಮರೆಮಾಡಿ",
+    createAccount: "ಖಾತೆ ರಚಿಸಿ",
+    noAccount: "ಖಾತೆ ಇಲ್ಲವೇ?",
+    haveAccount: "ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ?",
+
+    dashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+    profile: "ನನ್ನ ಪ್ರೊಫೈಲ್",
+    settings: "ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+    newRequest: "ಹೊಸ ವಿನಂತಿ",
+    allRequests: "ಎಲ್ಲಾ ವಿನಂತಿಗಳು",
+
+    paymentDashboard: "ಪಾವತಿ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+    managePayments: "ವಿಶ್ವಾಸದಿಂದ ಪಾವತಿಗಳನ್ನು ನಿರ್ವಹಿಸಿ.",
+    dashboardDescription:
+      "ವಿನಂತಿಯನ್ನು ರಚಿಸಿ, ಪಾವತಿ ಪುರಾವೆಯನ್ನು ಸಲ್ಲಿಸಿ ಮತ್ತು ಅದರ ಸ್ಥಿತಿಯನ್ನು ಪರಿಶೀಲಿಸಿ.",
+
+    totalRequests: "ಒಟ್ಟು ವಿನಂತಿಗಳು",
+    awaitingProof: "ಪುರಾವೆಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ",
+    underReview: "ಪರಿಶೀಲನೆಯಲ್ಲಿದೆ",
+    approved: "ಅನುಮೋದಿಸಲಾಗಿದೆ",
+    rejected: "ತಿರಸ್ಕರಿಸಲಾಗಿದೆ",
+    pendingProof: "ಪುರಾವೆ ಬಾಕಿಯಿದೆ",
+    proofSubmitted: "ಪುರಾವೆ ಸಲ್ಲಿಸಲಾಗಿದೆ",
+
+    createPaymentRequest: "ಪಾವತಿ ವಿನಂತಿಯನ್ನು ರಚಿಸಿ",
+    paymentTitle: "ಪಾವತಿಯ ಶೀರ್ಷಿಕೆ",
+    enterPaymentTitle: "ಪಾವತಿಯ ಶೀರ್ಷಿಕೆಯನ್ನು ನಮೂದಿಸಿ",
+    amount: "ಮೊತ್ತ",
+    description: "ವಿವರಣೆ",
+    enterDescription: "ಪಾವತಿಯ ವಿವರಣೆಯನ್ನು ನಮೂದಿಸಿ",
+    requester: "ವಿನಂತಿದಾರ",
+    requesterName: "ವಿನಂತಿದಾರರ ಹೆಸರು",
+    receiver: "ಸ್ವೀಕರಿಸುವವರು",
+    receiverName: "ಸ್ವೀಕರಿಸುವವರ ಹೆಸರು",
+    createRequest: "ವಿನಂತಿಯನ್ನು ರಚಿಸಿ",
+    creatingRequest: "ವಿನಂತಿಯನ್ನು ರಚಿಸಲಾಗುತ್ತಿದೆ...",
+    requestCreated: "ಪಾವತಿ ವಿನಂತಿಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ರಚಿಸಲಾಗಿದೆ!",
+
+    refresh: "ಮರುಲೋಡ್ ಮಾಡಿ",
+    refreshing: "ಮರುಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+    submitProof: "ಪುರಾವೆ ಸಲ್ಲಿಸಿ",
+    enterUpiReference: "UPI ವಹಿವಾಟಿನ ಉಲ್ಲೇಖವನ್ನು ನಮೂದಿಸಿ",
+    proofSubmittedSuccessfully: "ಪಾವತಿ ಪುರಾವೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಸಲ್ಲಿಸಲಾಗಿದೆ!",
+    enterProofError: "ದಯವಿಟ್ಟು UPI ವಹಿವಾಟಿನ ಉಲ್ಲೇಖವನ್ನು ನಮೂದಿಸಿ.",
+
+    request: "ವಿನಂತಿ",
+    status: "ಸ್ಥಿತಿ",
+    paymentProof: "ಪಾವತಿ ಪುರಾವೆ",
+    noRequests: "ಇನ್ನೂ ಯಾವುದೇ ಪಾವತಿ ವಿನಂತಿಗಳಿಲ್ಲ.",
+    loading: "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+    save: "ಉಳಿಸಿ",
+    cancel: "ರದ್ದುಮಾಡಿ",
+    edit: "ತಿದ್ದುಪಡಿ ಮಾಡಿ",
+    delete: "ಅಳಿಸಿ",
+    search: "ಹುಡುಕಿ",
+    back: "ಹಿಂದಕ್ಕೆ",
+
+    profileDetails: "ಪ್ರೊಫೈಲ್ ವಿವರಗಳು",
+    phone: "ಫೋನ್ ಸಂಖ್ಯೆ",
+    city: "ನಗರ",
+    introduction: "ಪರಿಚಯ",
+    uploadPhoto: "ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    removePhoto: "ಫೋಟೋ ತೆಗೆದುಹಾಕಿ",
+    saveProfile: "ಪ್ರೊಫೈಲ್ ಉಳಿಸಿ",
+
+    requiredField: "ಈ ಕ್ಷೇತ್ರವನ್ನು ಭರ್ತಿ ಮಾಡುವುದು ಅಗತ್ಯ.",
+    somethingWentWrong: "ಏನೋ ತಪ್ಪಾಗಿದೆ.",
+    backendError:
+      "ಬ್ಯಾಕೆಂಡ್‌ಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. Spring Boot ಚಾಲನೆಯಲ್ಲಿದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸಿ.",
+
+    howItWorks: "ಇದು ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ",
+    stepOne: "ವಿನಂತಿಯನ್ನು ರಚಿಸಿ",
+    stepTwo: "ಪಾವತಿ ಪುರಾವೆಯನ್ನು ಸಲ್ಲಿಸಿ",
+    stepThree: "ವಿನಂತಿಯನ್ನು ಪರಿಶೀಲಿಸಿ",
+    footer: "ಸ್ಪಷ್ಟವಾದ ಪುರಾವೆಯಿಂದ ಪಾವತಿಯಲ್ಲಿ ಪಾರದರ್ಶಕತೆ ಹೆಚ್ಚುತ್ತದೆ.",
+  },
+};
+
+export function useLanguage() {
+  const [language, setLanguageState] = useState(() => {
+    try {
+      const savedLanguage = localStorage.getItem("proofbeforepay-language");
+
+      if (["en", "hi", "kn"].includes(savedLanguage)) {
+        return savedLanguage;
+      }
+
+      return "en";
+    } catch {
+      return "en";
+    }
+  });
+
+  const setLanguage = (newLanguage) => {
+    const safeLanguage = ["en", "hi", "kn"].includes(newLanguage)
+      ? newLanguage
+      : "en";
+
+    setLanguageState(safeLanguage);
+
+    try {
+      localStorage.setItem("proofbeforepay-language", safeLanguage);
+    } catch {
+      // Language changes still work during the current session.
+    }
+  };
+
+  const t = (key) => {
+    return translations[language][key] ?? translations.en[key] ?? key;
+  };
+
+  return { language, setLanguage, t };
+}
